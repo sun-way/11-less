@@ -70,9 +70,13 @@ if (isset($_POST["create_order"]))
             {
                 $currentBasket->putInBasket($value,$_POST["quantity".$k],$i);
                 $i++;
-                if (empty($_POST['quantity'.$k]))
+                if (empty($_POST['quantity'.$k]) or  ($_POST['quantity'.$k])==0)
                 {
-                    throw new ControlException('Не указано количество товара', ControlException::NO_QUANTITY);
+                   throw new ControlException('Не указано количество товара ', ControlException::NO_QUANTITY);
+                }
+               if ( ($_POST['quantity'.$k])<0)
+                {
+                    throw new ControlException('количество товара отрицательное', ControlException::OTR_QUANTITY);
                 }
             }
             catch (ControlException $e)
@@ -99,8 +103,6 @@ if(isset($currentBasket)):
             <input type="submit" name="form_order" value="Оформить к оплате">
         </fieldset>
     </form>
-<?php
-endif;
-?>
+<?php endif;?>
 </body>
 </html>
