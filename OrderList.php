@@ -25,4 +25,4 @@ if($_POST["clear"])
 ?>
 
 </body>
-</h
+</html>
