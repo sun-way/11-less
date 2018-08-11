@@ -11,7 +11,7 @@ abstract class Product implements getProducts
     }
     public function getName()
     {
-        return $this->name;
+        echo $this->name;
     }
     public function getPrice()
     {
